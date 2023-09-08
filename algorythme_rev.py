@@ -27,13 +27,21 @@ def rechmin(t):
         if i < mini:
             mini = i
     return mini
+
+def rechmax(t):
+    maxx = t[0]
+    for i in t:
+        if i > maxx:
+            maxx = i
+    return maxx
+
+
     
     
     
 
 ## programme principale
-if __name__ == "__main__":
-    t = (5, 5, 5, 9, 1, 1)
-    resultat = average_table(t)
+t = (5, 5, 5, 9, 1, 1)
+resultat = average_table(t)
 
-    print(resultat)
+print(resultat)
