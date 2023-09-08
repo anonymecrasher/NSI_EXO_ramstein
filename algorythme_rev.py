@@ -36,12 +36,18 @@ def rechmax(t):
     return maxx
 
 
+def occ_first(t, el):
+    for i in range(len(t)):
+        if t[i] is el:
+            return i
+        
     
     
     
 
 ## programme principale
-t = (5, 5, 5, 9, 1, 1)
-resultat = average_table(t)
+if __name__ == '__main__'
+    t = (5, 5, 5, 9, 1, 1)
+    resultat = average_table(t)
 
-print(resultat)
+    print(resultat)
