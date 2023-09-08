@@ -14,6 +14,10 @@ def somme_tableau(t):
     for i in t:
         ans += int(i)
     return ans
+def average_table(t):
+    ans = somme_tableau(t)
+    ans = ans /len(t)
+    return ans
         
     
     
@@ -21,5 +25,6 @@ def somme_tableau(t):
 
 ## programme principale
 t = (5, 5, 5, 9, 1, 1)
-resultat = somme_tableau(t)
+resultat = average_table(t)
+
 print(resultat)
