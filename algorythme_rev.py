@@ -9,10 +9,17 @@ def somme(n):
         ans += i
     return ans
 
-def somme_tableau(table):
-    ...
+def somme_tableau(t):
+    ans = 0
+    for i in t:
+        ans += int(i)
+    return ans
+        
+    
+    
     
 
 ## programme principale
-resultat = somme(5)
+t = (5, 5, 5, 9, 1, 1)
+resultat = somme_tableau(t)
 print(resultat)
