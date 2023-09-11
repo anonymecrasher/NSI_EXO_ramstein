@@ -19,4 +19,5 @@ def main():
     t = [5,8,12,1,6,14,13,22,3,87]
     average_table(t)
 
-if
+if __name__ == '__main__':
+    main()
