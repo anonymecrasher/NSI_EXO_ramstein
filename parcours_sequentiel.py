@@ -21,6 +21,23 @@ def average_table(t):
     ans = somme_tableau(t)
     ans = ans /len(t)
     return ans
+
+def valeur_extreme(t):
+    
+    mini = t[0]
+    maxx = t[0]
+    for i in t:
+        if i < mini:
+            mini = i
+        if i > maxx:
+            maxx = i
+    return mini, maxx
+    
+    
+
+
+
+
 def main():
     
     help(average_table)
