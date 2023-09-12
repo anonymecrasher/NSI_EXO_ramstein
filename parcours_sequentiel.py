@@ -2,9 +2,9 @@
 import random
 
 ## Déclaration des fonction
-def table_generator():
+def table_generator(taille):
     t = []
-    for i in range(random.randint(3, 18)):
+    for i in range(taille):
         t.append(random.randint(0, 256))
     return t
 
