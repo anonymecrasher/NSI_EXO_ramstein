@@ -34,6 +34,9 @@ def valeur_extreme(t):
     return mini, maxx
     
 def insere_element(t, p, e):
+    
+    assert p <= len(t), "la position doit etre inferieur a la taille du tableau"
+    
     t = t[:p] + [e] + t[p:]
     return t
 
