@@ -33,8 +33,9 @@ def valeur_extreme(t):
             maxx = i
     return mini, maxx
     
-    
-
+def insere_element(t, p, e):
+    t = t[:p] + [e] + t[p:]
+    return t
 
 
 
@@ -46,7 +47,7 @@ def main():
     t = [random.randint(0,256) for i in range(random.randint(3,18))]
     print(t)
     print(average_table(t))
-
+    print(insere_element(t, 1, 97))
 
 
 
