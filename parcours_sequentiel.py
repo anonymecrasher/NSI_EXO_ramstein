@@ -1,8 +1,12 @@
 ## importation des modules
-
+import random
 
 ## Déclaration des fonction
-
+def table_generator():
+    t = []
+    for i in range(random.randint(3, 18)):
+        t.append(random.randint(0, 256))
+    return t
 
 def somme_tableau(t):
     ans = 0
@@ -21,7 +25,8 @@ def main():
     
     help(average_table)
     
-    t = [5,8,12,1,6,14,13,22,3,87]
+    t = table_generator()
+    print(t)
     print(average_table(t))
 
 
