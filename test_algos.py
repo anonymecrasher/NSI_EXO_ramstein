@@ -27,6 +27,10 @@ def main():
     tris.tri_selection(t)
     t2 = time.perf_counter()
     print(t2-t1)
+    t1 = time.perf_counter()
+    tris.tpins(t)
+    t2 = time.perf_counter()
+    print(t2-t1)
     
     
     
