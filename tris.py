@@ -17,6 +17,21 @@ def tri_selection(tableau):
         tt.append(tpt[pp])
         tpt = tpt[:pp] + tpt[pp+1:]
     return tt
+
+def tpins(tableau):
+    n = len(tableau)
+
+    for i in range(1, n):
+        element_a_inserer = tableau[i]
+        j = i
+
+        while j > 0 and tableau[j - 1] > element_a_inserer:
+            tableau[j] = tableau[j - 1]
+            j -= 1
+
+        tableau[j] = element_a_inserer
+
+    return tableau
         
         
         
