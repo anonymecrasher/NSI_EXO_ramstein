@@ -1,6 +1,7 @@
 ## importation des modules
 
 import parcours_sequentiel
+import tris
 import time
 
 
@@ -22,6 +23,10 @@ def main():
     print(parcours_sequentiel.insere_element(t, 500, 300))
     t2 = time.perf_counter()
     print(t2- t1)
+    t1 = time.perf_counter()
+    tris.tri_selection(t)
+    t2 = time.perf_counter()
+    print(t2-t1)
     
     
     
