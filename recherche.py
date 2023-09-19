@@ -20,7 +20,11 @@ def rech_dich(liste, el):
     return pos
 
 
-
+def recherche_sequentielle(liste, element_recherche):
+    a = 0
+    for i in range(len(liste)):
+        if liste[i] == element_recherche:
+            print(i)
 
 
 
