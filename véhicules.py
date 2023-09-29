@@ -4,14 +4,14 @@
 class Voiture():
     
     def __init__(self,
-                 moteur='essence',
-                 couleur='bleu',
-                 puissance='130',
-                 nb_porte='4',
-                 boite_vitesse='manuelle',
-                 masse='1000',
-                 masse_vide='1000',
-                 masse_PTAC = '300'):
+                 moteur = 'essence',
+                 couleur = 'bleu',
+                 puissance = '130',
+                 nb_porte = '4',
+                 boite_vitesse = 'manuelle',
+                 masse = '1000',
+                 masse_vide = '1000',
+                 masse_PTAC = '1300'):
         self.moteur = moteur
         self.couleur = couleur
         self.puissance = puissance
@@ -21,7 +21,7 @@ class Voiture():
         self.masse_vide = masse_vide
         self.masse_PTAC = masse_PTAC
         
-    def caracteristique(self):
+    def __caracteristique(self):
         return {'moteur': self.moteur,
                 'couleur': self.couleur,
                 'puissance': self.puissance,
@@ -31,6 +31,13 @@ class Voiture():
                 'masse_vide': self.masse_vide,
                 'masse_PTAC': self.masse_PTAC}
     
+    def affiche_caracteristique(self):
+        dico = self.__caracteristique()
+        print('Les caracteristique du véhicule sont:')
+        for cle, valeur  in dico.items():
+            print(cle, ':', valeur)
+    
+    
     def modifie_couleur(self, nouvelle_couleur):
         self.couleur = nouvelle_couleur
     
@@ -39,6 +46,20 @@ class Voiture():
     
     def modifie_puissance(self, new_puissance):
         self.puissance = new_puissance
+        
+    
+    def charge(self, add_masse):
+        self.masse = str(int(self.masse) + int(add_masse))
+        if self.masse < self.masse_PTAC:
+            return True
+        else:
+            return False
+    def decharge(self, add_masse):
+        self.masse = str(int(self.masse) - int(add_masse))
+        if self.masse < self.masse_PTAC:
+            return True
+        else:
+            return False
     
 
 
@@ -53,8 +74,10 @@ def main():
     voiture_2 = Voiture('diesel', 'orange', '240')
     voiture_3 = Voiture(puissance='90')
     voiture_1.modifie_couleur('blouge')
-    print(voiture_1.caracteristique())
-    print(voiture_2.caracteristique())
+
+    voiture_2.affiche_caracteristique()
+    help(Voiture)
+
 
 ## Programme principal
 if __name__ == '__main__':
