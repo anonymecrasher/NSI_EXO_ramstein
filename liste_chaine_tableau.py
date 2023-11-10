@@ -26,6 +26,10 @@ print(id(m2))
 print(hex(id(m2)))
 print(bin(id(m2)))
 
+print(id(m1))
+print(hex(id(m1)))
+print(bin(id(m1)))
+
 m2.valeur = 9
 print(m2.valeur)
 m3 = Maillon(2)
