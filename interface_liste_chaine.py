@@ -62,6 +62,27 @@ class Liste_chainee():
     
     def ajouter_element_tete(self,valeur = 0):
         self.tete = Maillon(valeur, self.tete)
+    
+    def supprimer_element_queue(self):
+        
+        maillon = self.tete
+        x = 0
+        long = self.len()
+        while long-2>x:
+            maillon = maillon.suivant
+            x+=1
+        maillon.suivant = None
+    
+    def supprimer_element_tete(self):
+        self.tete = self.tete.suivant
+        
+    def inserer_element(self):
+        pass
+        
+        
+        
+        
+        
             
         
         
@@ -79,6 +100,8 @@ def main():
     print(l1.len())
     print(l1.extract_element(1))
     l1.ajouter_element_tete()
+    print(l1.list())
+    l1.supprimer_element_queue()
     print(l1.list())
     
 
