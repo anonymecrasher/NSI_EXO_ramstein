@@ -25,9 +25,14 @@ class Pile:
         return self.valeurs[-1]
     
     def longeur(self):
-        if self.est_vide():
-            print('la liste est vide')
-        return len(self.valeurs)
+        p = Pile()
+        i = 0
+        while not self.est_vide():
+            p.empiler(self.depiler())
+            i += 1
+        while not p.est_vide():
+            self.empiler(p.depiler())
+        return i
     
     def tuple(self):
         if self.est_vide():
@@ -53,3 +58,4 @@ def main():
 ## programme principal
 if __name__ == '__main__':
     main()
+    
