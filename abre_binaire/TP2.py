@@ -1,6 +1,7 @@
 ## Importation des modules
 from binarytree import Node
 import abre_binaire
+import module_file
 
 ## Déclaration des fonctions
 def est_vide(arbre):
@@ -70,6 +71,18 @@ def parcours_infix(arbre):
         parcours_infix(arbre.left)
         print(arbre.value)
         parcours_infix(arbre.right)
+def parcours_infixd(arbre):
+    if arbre != None:
+        return parcours_infixd(arbre.right), arbre.value, parcours_infixd(arbre.left)
+
+def is_abr(arbre):
+    abr = True
+    a = parcours_infixd(arbre)
+    for i in range(1,len(arbre)):
+        if abr:
+            if arbre[i-1] >= arbre[i]:
+                abr = False
+    return abr
     
 def parcours_postfix(arbre):
     if arbre != None:
@@ -77,6 +90,20 @@ def parcours_postfix(arbre):
         parcours_postfix(arbre.right)
     
         print(arbre.value)
+        
+def parcours_largeur(arbre):
+    
+    l = []
+    file = module_file.File()
+    file.enfiler(arbre)
+    while not file.est_vide():
+        temp = file.defiler()
+        if temp != None:
+            l.append(temp.value)
+
+            file.enfiler(temp.left)
+            file.enfiler(temp.right)
+    return l
 
 
 ## Déclaration des classes
@@ -86,6 +113,7 @@ def parcours_postfix(arbre):
 def main():
     arbre = abre_binaire.rand_abr(3)
     arbre5 = Node(12, Node(1, Node(6, Node(3, None, None), Node(8, None, None)), Node(0, None, None)), Node(13, Node(2, Node(13, Node(16, Node(1684, None, None), None), None), Node(11, None, None)), Node(7, None, None)))
+    arbre6 = Node(50, Node(25, Node(12, Node(6), Node(15)), Node(37, Node(31), Node(43))),Node(75, Node(62,Node(56),Node(65)),Node(87,Node(81),Node(93))))
     print(arbre)
     print(est_vide(arbre))
     print(taille_arbre(arbre))
@@ -95,6 +123,12 @@ def main():
     parcours_prefix(arbre)
     parcours_infix(arbre)
     parcours_postfix(arbre)
+    print(arbre5)
+    
+    print(parcours_largeur(arbre5))
+    
+    print(parcours_infixd(arbre6))
+    print(is_abr(arbre6))
     
     
 
