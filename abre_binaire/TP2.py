@@ -105,6 +105,38 @@ def parcours_largeur(arbre):
             file.enfiler(temp.right)
     return l
 
+def recherche_ABR(arbre, etiquette):
+    if arbre == None:
+        return False
+    elif arbre.value == etiquette:
+        return True
+    elif arbre.value < etiquette:
+        return recherche_ABR(arbre.right, etiquette)
+    else:
+        return recherche_ABR(arbre.left, etiquette)
+
+def min_ABR(arbre):
+    if arbre.left == None:
+        return arbre.value
+    else:
+        return min_ABR(arbre.left)
+        
+def max_ABR(arbre):
+    if arbre.right == None:
+        return arbre.value
+    else:
+        return max_ABR(arbre.right)
+    
+def inserer_ABR(arbre, etiquette):
+    if arbre == None:
+        return Node(etiquette)
+    elif etiquette < arbre.value:
+        return Node(arbre.value, inserer_ABR(arbre.left, etiquette), arbre.right)
+    elif etiquette > arbre.value:
+        return Node(arbre.value, arbre.left, inserer_ABR(arbre.right, etiquette))
+    return arbre
+    
+
 
 ## Déclaration des classes
 
@@ -125,10 +157,22 @@ def main():
     parcours_postfix(arbre)
     print(arbre5)
     
-    print(parcours_largeur(arbre5))
+    #print(parcours_largeur(arbre6))
+    arbre6 = Node(50, Node(25, Node(12, Node(6), Node(15)), Node(37, Node(31), Node(43))),Node(75, Node(62,Node(56),Node(65)),Node(87,Node(81),Node(93))))
     
-    print(parcours_infixd(arbre6))
-    print(is_abr(arbre6))
+    print(arbre6)
+    print(recherche_ABR(arbre6,4639))
+    #print(parcours_infixd(arbre6))
+    #print(is_abr(arbre6))
+    print(max_ABR(arbre6))
+    print(inserer_ABR(arbre6,26))
+    
+    arbre = None
+    i = 0
+    while i == 10:
+        arbre = inserer_ABR(arbre, i)
+        i += 1
+    print(arbre)
     
     
 
