@@ -60,6 +60,30 @@ def g(x):
     return x ** 2
 def is_in10and20(x):
     return x>10 and x<20
+
+def nb_premier(n):
+    il = []
+    for i in range(n):
+        t = True
+        for y in range(2,i):
+            if i % y == 0:
+                t = False
+                break
+        if t == True:
+            il.append(i)
+    return il
+
+def est_premier(nb):
+    for y in range(2,nb):
+        if nb % y == 0:
+            return False
+    return True
+
+
+                
+                
+                
+        
 ## Programme principal
 
 
@@ -88,6 +112,16 @@ def main():
         print('h('+str(i)+ ')=',h(i))
     print(tableau_trie)
     print(add_one(2))
+    liste_racine = [(i ** 1/2) for i in range(100)]
+    liste_racine = list(map(lambda x: x ** 1/2,range(200)))
+    print(liste_racine)
+    
+    print(list(filter(lambda x: x % 2 == 0,range(200))))
+    print(list(filter(lambda x: list(map(lambda y: x % y, range(2,x))) != x  * [0],range(1,200))))
+    print(nb_premier(5000))
+    print(est_premier(7))
+    a = lambda nb: [True for y in range(2,nb) if nb % y != 0]
+    print(a(7))
 
 ## Programme principal
 
