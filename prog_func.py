@@ -1,4 +1,5 @@
 ## Importation des modules
+import functools
 
 ## Déclaration des fonctions
 def cercle(x):
@@ -81,17 +82,14 @@ def est_premier(nb):
 
 
                 
-                
-                
-        
-## Programme principal
-
-
 
 ## Déclaration des classes
 
 ## fonction principale
 def main():
+    phrasee = """En informatique, la programmation purement fonctionnelle est un paradigme de programmation — un style de construction de la structure et des éléments des programmes informatiques — qui considère toutes les opérations comme l'évaluation de fonctions mathématiques.
+
+L'état et les objets immuables sont généralement modélisés à l'aide d'une logique temporelle, en tant que variables explicites représentant l'état du programme à chaque étape de son exécution : l'état d'une variable est transmis en tant que paramètre d'entrée d'une fonction de transformation d'état, qui renvoie l'état mis à jour en tant que partie de sa valeur de retour. Ce style gère les modifications d'état sans perdre la transparence référentielle des expressions du programme."""
     add_one = lambda x: x+1
     def divise(f1,f2):
         return lambda x: f1(x) / f2(x)
@@ -120,8 +118,20 @@ def main():
     print(list(filter(lambda x: list(map(lambda y: x % y, range(2,x))) != x  * [0],range(1,200))))
     print(nb_premier(5000))
     print(est_premier(7))
-    a = lambda nb: [True for y in range(2,nb) if nb % y != 0]
+    a = lambda nb: [nb % y != 0 for y in range(2,nb)]
+    #est_premiere = lambda x: functools.reduce(lambda acc,y: acc and y, lambda nb: [nb % y != 0 for y in range(2,nb)])
+    for i in range(100):
+        print(i, est_premiere(i))
     print(a(7))
+    liste_phrase = phrasee.split('.')
+    f_compte = lambda phrase: phrase.count('fonction')
+    liste_occurence = list(map(f_compte, liste_phrase))
+    f_somme = lambda acc, x: acc + x
+    total = functools.reduce(f_somme,liste_occurence)
+    print(total)
+    f_filtre = lambda x: 'programmation' in x
+    liste_filtree = list(filter(f_filtre, liste_phrase))
+    liste_forme = [cercle,carre,triangle_equilateral,rectangle]
 
 ## Programme principal
 
