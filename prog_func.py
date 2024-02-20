@@ -119,10 +119,8 @@ L'état et les objets immuables sont généralement modélisés à l'aide d'une 
     print(nb_premier(5000))
     print(est_premier(7))
     a = lambda nb: [nb % y != 0 for y in range(2,nb)]
-    #est_premiere = lambda x: functools.reduce(lambda acc,y: acc and y, lambda nb: [nb % y != 0 for y in range(2,nb)])
-    for i in range(100):
-        print(i, est_premiere(i))
-    print(a(7))
+    est_premiere = lambda x: functools.reduce(lambda acc,y: acc and y, [x % y != 0 for y in range(2,x)])
+    print((lambda x: [2] + [n for n in range(3,x) if functools.reduce(lambda acc,y: acc and y, [n % i != 0 for i in range(2,n)])])(100))
     liste_phrase = phrasee.split('.')
     f_compte = lambda phrase: phrase.count('fonction')
     liste_occurence = list(map(f_compte, liste_phrase))
