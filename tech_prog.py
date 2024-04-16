@@ -82,10 +82,39 @@ def rendu_recursif_top_down(valeur,systeme_monetaire):
             all_soluce.append([systeme_monetaire[piece]]+[rendu_recursif_top_down(valeur-systeme_monetaire[piece],systeme_monetaire)])
             
         return all_soluce
+    
+def rendu_recursif_top_down_mem(valeur,systeme_monetaire,dico):
+    if valeur == 0:
+        return []
+    elif valeur in dico:
+        return dico[valeur]
+    else:
+        all_soluce = []
+        index = indice_plus_grande(valeur,systeme_monetaire)
+        for piece in range(index+1):
+            resultat =  [systeme_monetaire[piece]]+[rendu_recursif_top_down_mem(valeur-systeme_monetaire[piece],systeme_monetaire,dico)]
+            all_soluce.append(resultat)
+        dico[valeur] = all_soluce.copy()
+        return all_soluce
             
-    
-    
-    
+
+def _calul_plus_grand_piece(valeur,systeme_monetaire):
+    for i in range(len(systeme_monetaire)):
+        if valeur > systeme_monetaire[-i]:
+            return systeme_monetaire[:len(systeme_monetaire)-i]
+def rendu_bottom_up(valeur,systeme_monetaire):
+        sol = [[[]],[[1]]]
+        for i in range(2,valeur+1):
+            pgcd = _calul_plus_grand_piece(valeur,systeme_monetaire)
+            print(pgcd)
+            sol.append([])
+            for y in pgcd:
+                sol[i].append([y] + sol[i - y])
+        return sol
+                
+            
+            
+        
     
     
 ## declaration de class
@@ -103,12 +132,20 @@ def main():
         #t2 = time.perf_counter_ns()
         #print(t2 - t1)
     sys = [1,2,5,10]
-    for i in range(35):
+    dico = {}
+    for i in range(15):
         t1 = time.perf_counter_ns()
         rendu_recursif_top_down(i,sys)
         t2 = time.perf_counter_ns()
         print(t2 - t1)
-    
+    print('change')
+    for i in range(10):
+        t1 = time.perf_counter_ns()
+        rendu_bottom_up(i,sys)
+        t2 = time.perf_counter_ns()
+        print(t2 - t1)
+        print(rendu_bottom_up(i,sys))
+        
         
 
 ## programme principal
